@@ -17,13 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from django.urls import include
 
-
-from .views import squares
+from .views import index
+from .views import compute_square
+from .views import compute_squares
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("squares/", squares, name="squares"),
-    path("", include("app.urls")),
+    path("", index, name="index"),
+    path("compute_square/<int:number>", compute_square, name="compute_square"),
+    path("compute_squares/<int:number>", compute_squares, name="compute_squares"),
 ]
