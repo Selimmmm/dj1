@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "app.apps.AppConfig",
+    "slot.apps.SlotConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
