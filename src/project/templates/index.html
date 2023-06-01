@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    {% load static %}
+    <script src="{% static 'js/test.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static'css/example.css' %}" /> {% endcomment %}
   </head>
   <body>
   <section class="section">
@@ -12,6 +21,8 @@
       <h1 class="title">
         Hello World
       </h1>
+
+      <div class="class-test" style="height:10px;width:200px;"></div>
       <p class="subtitle">
         My first website with <strong>Bulma</strong>!
       </p>
