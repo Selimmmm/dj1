@@ -23,14 +23,14 @@ class TimeSlotForm(forms.Form):
     )
 
     date_end = forms.DateTimeField(
-        label="Starting date",
+        label="Ending date",
         widget=DateInput(attrs=ATTRS_FIELD),
     )
 
-    date_created = forms.DateTimeField(
-        label="Starting date",
-        widget=DateInput(attrs={"class": "input"}),
-    )
+    # date_created = forms.DateTimeField(
+    #     label="Starting date",
+    #     widget=DateInput(attrs={"class": "input"}),
+    # )
 
     class Meta:
         model = TimeSlot
