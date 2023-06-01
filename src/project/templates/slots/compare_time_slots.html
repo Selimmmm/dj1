@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+        {% load static %}
+        <script src="{% static 'js/test.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+        {% comment %}
+        <link rel="stylesheet" type="text/css" href="{% static'css/example.css' %}" /> {% endcomment %}
+    </head>
+
+    <body>
+        <section class="section">
+            <div class="container">
+                <div style="max-width:600px;margin:auto;">
+                    <h1 class="title">
+                        Compare Time Slots J<sup>3</sup>
+                    </h1>
+                    <h2 class="subtitle">From {{date_from}} - to {{date_to}}</h2>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

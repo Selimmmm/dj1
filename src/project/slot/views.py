@@ -35,3 +35,9 @@ def give_time_slots(request):
     form = TimeSlotForm()
     context = {"form": form}
     return render(request, "slots/give_time_slots.html", context=context)
+
+
+def compare_time_slots(request, date_from, date_to):
+    context = {"date_from": date_from, "date_to": date_to}
+    print(date_from), print(date_to)
+    return render(request, "slots/compare_time_slots.html", context=context)
