@@ -26,7 +26,6 @@ def give_time_slots(request):
     if request.method == "POST":
         form = TimeSlotForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
             time_slot_inst = TimeSlot.objects.create(**form.cleaned_data)
             time_slot_inst.save()
         return render(request, "form_received.html")
@@ -38,6 +37,13 @@ def give_time_slots(request):
 
 
 def compare_time_slots(request, date_from, date_to):
-    context = {"date_from": date_from, "date_to": date_to}
-    print(date_from), print(date_to)
+    timeslots_per_user = TimeSlot.per_user.grouped(date_from=date_from, date_to=date_to)
+
+    print(timeslots_per_user)
+
+    context = {
+        "date_from": date_from,
+        "date_to": date_to,
+        "timeslots_per_user": timeslots_per_user,
+    }
     return render(request, "slots/compare_time_slots.html", context=context)

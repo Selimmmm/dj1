@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Hello Bulma!</title>
+        <title>Compare Time Slots</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
         {% load static %}
@@ -20,13 +20,70 @@
     <body>
         <section class="section">
             <div class="container">
-                <div style="max-width:600px;margin:auto;">
+                <div style="max-width:800px;margin:auto;">
                     <h1 class="title">
                         Compare Time Slots J<sup>3</sup>
                     </h1>
                     <h2 class="subtitle">From {{date_from}} - to {{date_to}}</h2>
+
+
+
+                    <hr class="my-6">
+
+                    <style>
+                        .JOHN::-webkit-progress-value {
+                            background-color: cyan !important;
+                        }
+
+                        .JEAN::-webkit-progress-value {
+                            background-color: violet !important;
+                        }
+
+                        .JEANNE::-webkit-progress-value {
+                            background-color: purple !important;
+                        }
+                    </style>
+
+                    <div class="container has-background-dark" style="border-radius:8px;">
+
+
+                        {% for username, timeslots in timeslots_per_user.items %}
+
+                        <div class="columns is-vcentered  p-5 has-text-white">
+
+                            <div class="column is-2">
+
+                                <div class="is-size-4 has-text-weight-bold">{{username}}</div>
+
+                            </div>
+
+                            <div class="column">
+
+                                {% for ts in timeslots %}
+
+                                <div class="py-1"
+                                    style="margin-left:{{ts.percent_start}}%;max-width:{{ts.percent_length}}%;">
+                                    <progress class="progress {{username}}" value="100" max="100"></progress>
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+
+
+                        </div>
+
+                        <hr>
+
+                        {% endfor %}
+
+                    </div>
+
+
                 </div>
+
             </div>
         </section>
     </body>
+
 </html>
