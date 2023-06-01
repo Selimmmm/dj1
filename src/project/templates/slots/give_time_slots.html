@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+        {% load static %}
+        <script src="{% static 'js/test.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+        {% comment %}
+        <link rel="stylesheet" type="text/css" href="{% static'css/example.css' %}" /> {% endcomment %}
+    </head>
+
+    <body>
+        <section class="section">
+            <div class="container">
+
+                <div style="max-width:600px;margin:auto;">
+
+                    <h1 class="title mb-4">
+                        Time Slot J<sup>3</sup>
+                    </h1>
+
+                    <form class="mt-4" method="post">
+
+                        {% csrf_token %}
+
+                        {{form.as_p}}
+
+                        <button type="submit"
+                            class="button is-fullwidth is-centered is-primary has-text-weight-semibold mt-4">
+                            <span class="icon">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </span>
+                            <span>Envoyer</span>
+                        </button>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <div class="class-test" style="height:10px;width:600px;margin:auto;"></div>
+
+    </body>
+
+</html>
