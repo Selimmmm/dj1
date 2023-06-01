@@ -49,7 +49,7 @@
                                 <div class="field pb-4-touch">
                                     <label class="label   has-text-dark">Message</label>
                                     <div class="control">
-                                        <textarea name="message" type="text" class="textarea  br-0"
+                                        <textarea value="{{message}}" name="message" type="text" class="textarea  br-0"
                                             placeholder="Vos besoins, vos projets..."></textarea>
                                     </div>
                                 </div>
@@ -64,8 +64,8 @@
                                 <div class="field">
                                     <label class="label has-text-dark">Nom</label>
                                     <div class="control has-icons-left">
-                                        <input name="lastname" id="lastname" class="input br-0" type="text"
-                                            placeholder="Martin">
+                                        <input value={{last_name}} name="lastname" id="lastname" class="input br-0" type="text"
+                                            placeholder="Martin" {% if not validation.last_name %} style="border:2px solid red;" {% endif %}>
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-user"></i>
                                         </span>
@@ -77,28 +77,34 @@
                                 <div class="field">
                                     <label class="label has-text-dark">Prénom</label>
                                     <div class="control has-icons-left has-icons-right">
-                                        <input name="firstname" class="input br-0" type="text" placeholder="Jean">
+                                        <input value={{first_name}} name="firstname" class="input br-0" type="text" placeholder="Jean"
+                                        {% if not validation.first_name %} style="border:2px solid red;" {% endif %}>
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-user"></i>
                                         </span>
                                     </div>
                                 </div>
 
+                                
+
                                 <div class="field">
                                     <label class="label has-text-dark">Téléphone</label>
                                     <div class="control has-icons-left has-icons-right">
-                                        <input name="tel" class="input br-0" type="tel" placeholder="0609234244">
+                                        <input value="{{tel}}" name="tel" class="input br-0 " type="tel" placeholder="0609234244" 
+                                        {% if not validation.tel %} style="border:2px solid red;" {% endif %}>
                                         <span class="icon is-small is-left">
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
                                     </div>
                                 </div>
 
+
+
                                 <div class="field ">
                                     <label id="email_label" class="label has-text-dark">Email</label>
                                     <div class="control has-icons-left has-icons-right">
-                                        <input name="email" class="input br-0" type="email"
-                                            placeholder="jean.martin@mail.fr">
+                                        <input value={{email}} name="email" class="input br-0" type="email"
+                                            placeholder="jean.martin@mail.fr" {% if not validation.email %} style="border:2px solid red;" {% endif %}>
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-envelope"></i>
                                         </span>

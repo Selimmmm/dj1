@@ -79,6 +79,9 @@ def send_image(request, data):
     return render(request, "send_image.html", context=context)
 
 
+from .validation import validate_data
+
+
 @require_http_methods(["GET", "POST"])
 def form_prospect(request):
     if request.method == "POST":
@@ -88,26 +91,32 @@ def form_prospect(request):
         email = request.POST.get("email")
         message = request.POST.get("message")
 
-        prospect_object = Prospect.objects.create(
-            first_name=first_name,
-            last_name=last_name,
-            tel=tel,
-            email=email,
-            message=message,
-        )
-        prospect_object.save()
+        validation = validate_data(first_name, last_name, tel, email, message)
 
-        # logger.debug(
-        #     " - ".join(
-        #         [
-        #             "[FORM      ]",
-        #             f"first_name: f{first_name}",
-        #             f"last_name: f{last_name}",
-        #             f"tel: f{tel}",
-        #             f"email: f{email}",
-        #         ]
-        #     )
-        # )
+        if all(validation.values()):
+            prospect_object = Prospect.objects.create(
+                first_name=first_name,
+                last_name=last_name,
+                tel=tel,
+                email=email,
+                message=message,
+            )
+            prospect_object.save()
 
-        return render(request, "form_received.html")
+            return render(request, "form_received.html")
+
+        else:
+            return render(
+                request,
+                "form_prospect.html",
+                context={
+                    "validation": validation,
+                    "tel": tel,
+                    "email": email,
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "message": message,
+                },
+            )
+
     return render(request, "form_prospect.html", context={})
