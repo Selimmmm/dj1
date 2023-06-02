@@ -17,13 +17,13 @@
     <body>
         <section id="form_container" class="hero is-captain">
             <div class="hero-body">
-
                 <div class="container" style="margin:auto;max-width:1250px;">
                     <p class="title has-text-dark  is-size-3-desktop is-size-4-touch">
                         Hello {{request.user}} - vous êtes bien connecté
                     </p>
                     <hr>
                     <p class="subtitle has-text-dark">
+                        {% comment %} cf app/urls.py : app_name:view_name {% endcomment %}
                         <a href="{% url 'app:compute_squares' 500 %}">Un calcul intéressant via une référence à la vue</a>
                     </p>
                 </div>
