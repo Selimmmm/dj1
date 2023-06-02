@@ -25,6 +25,7 @@ from .views import bulma_front
 from .views import random_wiki
 from .views import send_image
 from .views import form_prospect
+from .views import hello_user
 
 urlpatterns = [
     path("", index, name="index"),
@@ -34,4 +35,5 @@ urlpatterns = [
     path("random_wiki", random_wiki, name="random_wiki"),
     re_path(r"^send_image/(P?<data>.+)", send_image, name="send_image"),
     path("form_prospect", form_prospect, name="form_prospect"),
+    path("hello_user", hello_user, name="hello_user"),
 ]

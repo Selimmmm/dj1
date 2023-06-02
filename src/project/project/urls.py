@@ -24,6 +24,7 @@ from .views import squares
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("squares/", squares, name="squares"),
     path("", include("app.urls")),
     # ne pas oublier le slash
