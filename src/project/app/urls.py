@@ -27,6 +27,9 @@ from .views import send_image
 from .views import form_prospect
 from .views import hello_user
 
+
+app_name = "app"
+
 urlpatterns = [
     path("", index, name="index"),
     path("compute_square/<int:number>", compute_square, name="compute_square"),

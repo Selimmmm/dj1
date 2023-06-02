@@ -28,5 +28,5 @@ urlpatterns = [
     path("squares/", squares, name="squares"),
     path("", include("app.urls")),
     # ne pas oublier le slash
-    path("slots/", include("slot.urls")),
+    path("slot/", include("slot.urls")),
 ]

@@ -27,6 +27,8 @@ register_converter(DateConverter, "date")
 
 from .views import give_time_slots, compare_time_slots
 
+app_name = "slot"
+
 urlpatterns = [
     path("give_time_slots", give_time_slots, name="give_time_slots"),
     path(
