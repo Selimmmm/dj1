@@ -26,8 +26,6 @@
                     </h1>
                     <h2 class="subtitle">From {{date_from}} - to {{date_to}}</h2>
 
-
-
                     <hr class="my-6">
 
                     <style>
@@ -52,25 +50,17 @@
                         <div class="columns is-vcentered  p-5 has-text-white">
 
                             <div class="column is-2">
-
                                 <div class="is-size-4 has-text-weight-bold">{{username}}</div>
-
                             </div>
 
                             <div class="column has-background-grey" style="border-radius:6px;">
-
                                 {% for ts in timeslots %}
-
                                 <div class="py-1"
-                                    style="margin-left:{{ts.percent_start}}%;max-width:{{ts.percent_length}}%;">
+                                    style="margin-left:{{ts.percent_start}}%;width:{{ts.percent_length}}%;">
                                     <progress class="progress {{username}}" value="100" max="100"></progress>
                                 </div>
-
                                 {% endfor %}
-
                             </div>
-
-
                         </div>
 
                         <hr>

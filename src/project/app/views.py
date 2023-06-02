@@ -129,6 +129,10 @@ def form_prospect(request):
     return render(request, "form_prospect.html", context={})
 
 
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
 def hello_user(request):
     """Redirect to this page after login. See settings.py LOGIN_REDIRECT_URL."""
     return render(request, "hello_user.html", context={})

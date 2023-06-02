@@ -18,8 +18,10 @@ class PerUserManager(models.Manager):
 
         # Group this way : {user_a: [ts1, ts2, ts3...], user_b: ...}
         timeslots_per_user = {}
-        for i, g in itertools.groupby(timeslots, key=operator.itemgetter("first_name")):
-            timeslots = list(g)
+        for first_name, timeslots in itertools.groupby(
+            timeslots, key=operator.itemgetter("first_name")
+        ):
+            timeslots = list(timeslots)
 
             # Compute the % start and length
             for ts in timeslots:
@@ -41,7 +43,7 @@ class PerUserManager(models.Manager):
                     / full_period_seconds,
                     2,
                 )
-            timeslots_per_user[i] = timeslots
+            timeslots_per_user[first_name] = timeslots
         return timeslots_per_user
 
 
