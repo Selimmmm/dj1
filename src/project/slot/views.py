@@ -38,6 +38,9 @@ def give_time_slots(request):
 
 def compare_time_slots(request, date_from, date_to):
     timeslots_per_user = TimeSlot.per_user.grouped(date_from=date_from, date_to=date_to)
+    from pprint import pprint
+
+    pprint(timeslots_per_user)
     context = {
         "date_from": date_from,
         "date_to": date_to,
