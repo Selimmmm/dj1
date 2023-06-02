@@ -27,11 +27,6 @@ class TimeSlotForm(forms.Form):
         widget=DateInput(attrs=ATTRS_FIELD),
     )
 
-    # date_created = forms.DateTimeField(
-    #     label="Starting date",
-    #     widget=DateInput(attrs={"class": "input"}),
-    # )
-
     class Meta:
         model = TimeSlot
-        # fields = "_all_" # pas nécessaire si tous spécifiés au dessus
+        # fields = "_all_" # pas nécessaire si spécifiés au-dessus

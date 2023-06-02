@@ -8,6 +8,7 @@ import itertools
 
 class PerUserManager(models.Manager):
     def grouped(self, date_from, date_to):
+        # Get timeslots
         timeslots = (
             super(PerUserManager, self)
             .get_queryset()
@@ -15,13 +16,16 @@ class PerUserManager(models.Manager):
             .values("date_start", "date_end", "first_name", "slot_type")
         )
 
+        # Group this way : {user_a: [ts1, ts2, ts3...], user_b: ...}
         timeslots_per_user = {}
         for i, g in itertools.groupby(timeslots, key=operator.itemgetter("first_name")):
             timeslots = list(g)
 
+            # Compute the % start and length
             for ts in timeslots:
-                print(ts)
                 full_period_seconds = (date_to - date_from).total_seconds()
+
+                # the progress will start at
                 ts["percent_start"] = round(
                     100
                     * (
@@ -30,16 +34,14 @@ class PerUserManager(models.Manager):
                     / full_period_seconds,
                     2,
                 )
-
+                # the progress will have a length of
                 ts["percent_length"] = round(
                     100
                     * (ts["date_end"] - ts["date_start"]).total_seconds()
                     / full_period_seconds,
                     2,
                 )
-
             timeslots_per_user[i] = timeslots
-
         return timeslots_per_user
 
 

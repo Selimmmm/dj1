@@ -19,17 +19,20 @@ from .models import Prospect
 
 
 def index(request):
+    """Example view."""
     # return HttpResponse(f"Hi")
     return render(request, "index.html")
 
 
 def compute_square(request, number):
+    """Example view with context and url parameter and templating"""
     square = number * number
     context = {"square": square, "number": number}
     return render(request, "compute_square.html", context=context)
 
 
 def compute_squares(request, number):
+    """Example view with context and url parameter + more complex templating"""
     numbers = list(range(number))
     squares = [n**2 for n in numbers]
     context = {
@@ -42,6 +45,7 @@ def compute_squares(request, number):
 
 
 def random_wiki(request):
+    """Dynamic view + scraping"""
     url = "https://en.wikipedia.org/wiki/Special:RandomInCategory/Featured_articles"
     response = requests.get(url)
 
@@ -59,10 +63,12 @@ def random_wiki(request):
 
 
 def bulma_front(request):
+    """Bulma Example"""
     return render(request, "bulma/main.html")
 
 
 def send_image(request, data):
+    """Get image from URL."""
     codex = data.split("data:image/")
     if len(codex) == 1:
         codex = "jpeg"
@@ -84,6 +90,7 @@ from .validation import validate_data
 
 @require_http_methods(["GET", "POST"])
 def form_prospect(request):
+    """Form example."""
     if request.method == "POST":
         first_name = request.POST.get("firstname")
         last_name = request.POST.get("lastname")
